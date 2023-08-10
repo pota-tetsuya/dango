@@ -1,6 +1,7 @@
 # Dango
 
 This is your story.
+konn
 
 ## Run in development mode
 
