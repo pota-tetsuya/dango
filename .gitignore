@@ -348,4 +348,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij,windows,macos,linux,node
-src/pages/calculator.tsx
+
