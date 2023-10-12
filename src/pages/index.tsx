@@ -4,7 +4,7 @@ import { Button } from '../components/Button';
 
 const IndexPage: NextPage = (): ReactElement => {
   const [count, setCount] = useState<number>(0);
-  const [labourHours, setLabourHours] = useState<string>('0');
+  const [labourHours, setLabourHours] = useState<string>(0);
 
   return (
     <>

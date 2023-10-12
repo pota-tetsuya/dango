@@ -1,0 +1,63 @@
+import { NextPage } from 'next';
+import React, { ReactElement, useState } from 'react';
+import { Button } from '../components/Button';
+
+const IndexPage: NextPage = (): ReactElement => {
+  const [displayValue, setDisplayValue] = useState<string>('0');
+
+  const handleButtonClick = (value: string) => {
+    if (displayValue === '0') {
+      setDisplayValue(value);
+    } else {
+      setDisplayValue(displayValue + value);
+    }
+  };
+
+  const handleOperatorClick = (operator: string) => {
+    // Implement operator logic here
+  };
+
+  const handleCalculate = () => {
+    // Implement calculation logic here
+  };
+
+  const handleClear = () => {
+    setDisplayValue('0');
+  };
+
+  return (
+    <>
+      <div className="m-10 p-4 w-2/3 mx-auto shadow-lg border-2 rounded-2xl">
+        <div className="mx-auto">
+          <div className="p-4 mb-3 border-2 rounded h-full w-full text-right">
+            <span className="text-gray-700 select-none">{displayValue}</span>
+          </div>
+          <div className="grid grid-cols-4 gap-2">
+            {/* Number buttons */}
+            {[7, 8, 9, '/', 4, 5, 6, '×', 1, 2, 3, '-', '.', 0, '=', '+'].map((item) => (
+              <Button
+                key={item}
+                className={`py-2 bg-${typeof item === 'number' ? 'cyan' : 'pink'}-300 text-white rounded border border-gray-200 cursor-pointer`}
+                onClick={() => {
+                  if (typeof item === 'number') {
+                    handleButtonClick(item.toString());
+                  } else if (item === '=') {
+                    handleCalculate();
+                  } else if (item === 'C') {
+                    handleClear();
+                  } else {
+                    handleOperatorClick(item);
+                  }
+                }}
+              >
+                <span className="select-none text-xl">{item}</span>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default IndexPage;

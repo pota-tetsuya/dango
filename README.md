@@ -1,7 +1,8 @@
 # Dango
 
-This is your story.
-konn
+This is your story.こんーkonnnnn---
+変わったかな？
+
 
 ## Run in development mode
 
