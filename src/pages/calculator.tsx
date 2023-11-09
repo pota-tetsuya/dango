@@ -4,8 +4,13 @@ import { Button } from '../components/Button';
 
 const IndexPage: NextPage = (): ReactElement => {
   const [count, setCount] = useState<string>('');
-  const [labourHours, setLabourHours] = useState<string>('0');
+  const [count1,setCount1] =  useState<number>(0);
+  const [operator,setOperator] =  useState<string>(`+`);
+  //↑四則演算の部分(表示はされない)
   
+  const [labourHours, setLabourHours] = useState<string>('0');
+ //↑使わない 
+
   return (
     <>
       <div className="m-10 p-4 w-2/3 mx-auto shadow-lg border-2 rounded-2xl">
@@ -15,14 +20,10 @@ const IndexPage: NextPage = (): ReactElement => {
           </div>
           <div className="grid grid-cols-4 gap-2">
           
-
-
-            
             <Button
               className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
               onClick={() => {
                 console.log(count);
-
                 setCount(count + '7');
 
               }}>
@@ -33,7 +34,6 @@ const IndexPage: NextPage = (): ReactElement => {
               className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
               onClick={() => {
                 console.log(count);
-
                 setCount(count + '8');
               }}>
               <span className="select-none text-xl">8</span>
@@ -50,7 +50,9 @@ const IndexPage: NextPage = (): ReactElement => {
             <Button
               className="py- bg-pink-300 text-white rounded border border-gray-00 cursor-pointer"
               onClick={() => {
-                setCount(count + '/');
+                setCount1(Number(count));
+                //これで表示されている文字が数字に変換されて保存する
+                setOperator(`/`)
               }}>
               <span className="select-none text-xl">/</span>
             </Button>
@@ -84,7 +86,9 @@ const IndexPage: NextPage = (): ReactElement => {
               onClick={() => {
                 console.log(count);
 
-                setCount(count + '×');
+                setCount1(Number(count));
+                //これで表示されている文字が数字に変換されて保存する
+                setOperator(`*`)
               }}>
               <span className="select-none text-xl">×</span>
             </Button>
@@ -120,8 +124,10 @@ const IndexPage: NextPage = (): ReactElement => {
               onClick={() => {
                 console.log(count);
 
-                setCount(count + '-');
-                
+                setCount1(Number(count));
+                //これで表示されている文字が数字に変換されて保存する
+                setOperator(`-`)
+
               }}>
               <span className="select-none text-xl">-</span>
             </Button>
@@ -137,7 +143,7 @@ const IndexPage: NextPage = (): ReactElement => {
               onClick={() => {
                 console.log(count);
 
-                setCount(count + '0');
+                setCount (Number(`0`));
               }}>
               <span className="select-none text-xl">0</span>
             </Button>
@@ -146,7 +152,19 @@ const IndexPage: NextPage = (): ReactElement => {
               onClick={() => {
                 console.log(count);
 
-                setCount(count + '=');
+                if(operator === `-`){
+                  setCount (`${Number(count)-count1}`);
+                }
+                if(operator === `+`){
+                  setCount (`${Number(count)+count1}`);
+                }
+                if(operator === `/`){
+                  setCount (`${Number(count)/count1}`);
+                }
+                if(operator === `*`){
+                  setCount (`${Number(count)*count1}`);
+                }
+
               }}>
               <span className="select-none text-xl">=</span>
             </Button>
@@ -155,7 +173,9 @@ const IndexPage: NextPage = (): ReactElement => {
               onClick={() => {
                 console.log(count);
 
-                setCount(count);
+                setCount1(Number(count));
+                //これで表示されている文字が数字に変換されて保存する
+                setOperator(`+`)
               }}>
               <span className="select-none text-xl">+</span>
             </Button>
