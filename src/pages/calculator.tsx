@@ -62,7 +62,7 @@ const IndexPage: NextPage = (): ReactElement => {
                 }
                 //これで表示されている文字が数字に変換されて保存する
                 setOperator(`/`)
-                setCount(``) 
+                setCount(`0`) 
                 //↑setcountの値を無記入にする
               }}>
               <span className="select-none text-xl">/</span>
@@ -115,7 +115,7 @@ const IndexPage: NextPage = (): ReactElement => {
                   setCount1 (pota)
                 }
                 setOperator(`*`)
-                setCount(`${pota}`) 
+                setCount(`0`) 
                
                 
 
@@ -170,7 +170,7 @@ const IndexPage: NextPage = (): ReactElement => {
 
                 //これで表示されている文字が数字に変換されて保存する
                 setOperator(`-`)
-                setCount(count1) 
+                setCount(`0`) 
                 //↑setcountの値を無記入にする
 
               }}>
@@ -211,13 +211,15 @@ const IndexPage: NextPage = (): ReactElement => {
                 console.log(count);
 
                 if(operator === `-`){
-                  setCount (`${Number(count)-count1}`);
+                  setCount(`${count1 - Number(count)}`);
+                  //setCount (count1-`${Number(count)}`);間違い
+                  //setCountはstringが欲しいので${　}の中でnumber同士で四則演算をする
                 }
                 if(operator === `+`){
                   setCount (`${Number(count)+count1}`);
                 }
                 if(operator === `/`){
-                  setCount (`${Number(count)/count1}`);
+                  setCount (`${count1/Number(count)}`);
                 }
                 if(operator === `*`){
                   setCount (`${Number(count)*count1}`);
